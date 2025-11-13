@@ -6,8 +6,6 @@ services:
     env_file: .env
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    networks:
-      - growgood_net
 
   backend:
     build: ./backend
@@ -18,8 +16,6 @@ services:
     env_file: .env
     expose:
       - "8000"
-    networks:
-      - growgood_net
 
   frontend:
     build: ./frontend
@@ -30,8 +26,6 @@ services:
     env_file: .env
     expose:
       - "3000"
-    networks:
-      - growgood_net
 
   max_bot:
     build: ./max_bot
@@ -40,8 +34,7 @@ services:
     restart: always
     expose:
       - "8080"
-    networks:
-      - growgood_net
+
 
   nginx:
   image: nginx:latest
