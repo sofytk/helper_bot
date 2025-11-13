@@ -1,0 +1,31 @@
+const AppConfig = {
+    YANDEX_MAPS_API_KEY: process.env.YANDEX_MAPS_API_KEY,
+    API_BASE_URL: process.env.API_BASE_URL || 'http://localhost:8000/api',
+    
+    MAP: {
+        defaultCenter: [55.7558, 37.6173],
+        defaultZoom: 10,
+        minZoom: 5,
+        maxZoom: 18
+    },
+    
+    SEARCH_RADIUS: 50,
+    
+    MAX: {
+        theme: 'light',
+        showBackButton: true,
+        BOT_TOKEN: process.env.MAX_BOT_TOKEN || ''
+    }
+};
+
+if (typeof AppConfig.YANDEX_MAPS_API_KEY !== 'undefined' && AppConfig.YANDEX_MAPS_API_KEY !== 'YOUR_YANDEX_MAPS_API_KEY') {
+   
+    const yandexScript = document.querySelector('script[src*="api-maps.yandex.ru"]');
+    if (yandexScript) {
+        yandexScript.src = yandexScript.src.replace('YOUR_YANDEX_MAPS_API_KEY', AppConfig.YANDEX_MAPS_API_KEY);
+    }
+}
+
+window.AppConfig = AppConfig;
+
+

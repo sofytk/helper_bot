@@ -33,3 +33,26 @@ def create_mission(db: Session, title: str, description: str, lat: str, lon: str
     db.commit()
     db.refresh(mission)
     return mission
+def get_user_profile(db: Session, user_id: int):
+    user = db.query(models.User).filter(models.User.id == user_id).first()
+    if not user:
+        return None
+
+    completed_missions = [
+        cm.mission for cm in user.completed_missions
+    ]
+
+    upcoming_missions = db.query(models.Mission).filter(
+        ~models.Mission.id.in_([cm.mission_id for cm in user.completed_missions])
+    ).all()
+
+    achievements = user.achievements
+
+    return {
+        "user": user,
+        "completed_missions": completed_missions,
+        "upcoming_missions": upcoming_missions,
+        "achievements": achievements
+    }
+
+
