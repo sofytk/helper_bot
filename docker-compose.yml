@@ -6,6 +6,8 @@ services:
     env_file: .env
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app_network
 
   backend:
     build: ./backend
@@ -16,7 +18,8 @@ services:
     env_file: .env
     expose:
       - "8000"
-
+    networks:
+      - app_network
 
   frontend:
     build: ./frontend
@@ -27,6 +30,8 @@ services:
     env_file: .env
     expose:
       - "3000"
+    networks:
+      - app_network
 
   max_bot:
     build: ./max_bot
@@ -35,6 +40,8 @@ services:
     restart: always
     expose:
       - "8080"
+    networks:
+      - app_network
 
   nginx:
     image: nginx:latest
@@ -49,7 +56,11 @@ services:
       - frontend
       - backend
       - max_bot
-    
+    networks:
+      - app_network
+
+networks:
+  app_network:
 
 volumes:
   postgres_data:
