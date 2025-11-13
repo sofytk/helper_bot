@@ -3,7 +3,7 @@ const getApiBaseUrl = () => {
     if (window.AppConfig && window.AppConfig.API_BASE_URL) {
         return window.AppConfig.API_BASE_URL;
     }
-    return 'http://localhost:8000/api';
+    return '/api';
 };
 
 const API_BASE_URL = getApiBaseUrl();

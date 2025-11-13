@@ -1,6 +1,6 @@
 const AppConfig = {
     YANDEX_MAPS_API_KEY: process.env.YANDEX_MAPS_API_KEY,
-    API_BASE_URL: process.env.API_BASE_URL || 'http://localhost:8000/api',
+    API_BASE_URL: '/api',
     
     MAP: {
         defaultCenter: [55.7558, 37.6173],
