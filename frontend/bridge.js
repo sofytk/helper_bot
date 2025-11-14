@@ -166,10 +166,10 @@ class MaxBridge {
         }
         
         if (this.isMax) {
-            return 'https://your-backend-domain.com/api';
+            return 'http://0.0.0.0:8000/api';
         }
         
-        return 'http://localhost:8000/api';
+        return 'http://0.0.0.0:8000/api';
     }
 
     async sendNotification(message) {

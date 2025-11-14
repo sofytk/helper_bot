@@ -7,5 +7,8 @@ git init
 git pull origin main
 
 cd $HOME
-docker-compose down -v
+docker-compose down
 docker-compose up -d --build
+
+apt install docker.io
+apt install podman-docker
