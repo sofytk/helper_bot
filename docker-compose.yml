@@ -2,51 +2,45 @@ services:
   db:
     image: postgres:15
     container_name: growgood_db
-    restart: always
+    restart: unless-stopped
     env_file: .env
+    expose:
+      - "5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    networks:
-      - growgood_net
+    
 
   backend:
     build: ./backend
     container_name: growgood_backend
-    restart: always
+    restart: unless-stopped
     depends_on:
       - db
-    env_file: .env
+    env_file: ./.env
     expose:
       - "8000"
-    networks:
-      - growgood_net
+    
 
   frontend:
     build: ./frontend
     container_name: growgood_frontend
-    restart: always
-    depends_on:
-      - backend
+    restart: unless-stopped
     env_file: .env
     expose:
       - "3000"
-    networks:
-      - growgood_net
 
   bot:
     build: ./max_bot
     container_name: growgood_bot
     env_file: .env
-    restart: always
+    restart: unless-stopped
     expose:
       - "8080"
-    networks:
-      - growgood_net
 
   nginx:
     image: nginx:latest
-    container_name: helper_nginx
-    restart: always
+    container_name: growgood_nginx
+    restart: unless-stopped
     depends_on:
       - frontend
       - backend
@@ -56,12 +50,8 @@ services:
       - "443:443"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
-    networks:
-      - growgood_net
+    
 
 volumes:
   postgres_data:
 
-networks:
-  growgood_net:
-    driver: bridge

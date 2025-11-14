@@ -6,7 +6,6 @@ cd helper_bot
 git init
 git pull origin main
 
-cd $HOME
 docker-compose down
 docker-compose up -d --build
 
