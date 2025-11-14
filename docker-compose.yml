@@ -29,7 +29,7 @@ services:
     env_file: .env
 
   nginx:
-    image: nginx:latest
+    image: docker.io/library/nginx:latest
     container_name: gg_nginx
     restart: unless-stopped
     depends_on:
