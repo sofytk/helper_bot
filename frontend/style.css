@@ -470,6 +470,7 @@ body{
   position: absolute;
   bottom: 80px;
   left: 50%;
+  align-items: center;
   transform: translateX(-50%);
   width: 80px;
   height: 100px;
