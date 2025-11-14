@@ -15,18 +15,20 @@ services:
       - db
     env_file: .env
 
-  frontend:
-    build: ./frontend
-    container_name: gg_frontend
-    restart: unless-stopped
-    depends_on:
-      - backend
+  # frontend:
+  #   build: ./frontend
+  #   container_name: gg_frontend
+  #   restart: unless-stopped
+  #   depends_on:
+  #     - backend
 
   bot:
     build: ./max_bot
     container_name: gg_bot
     restart: unless-stopped
     env_file: .env
+    expose:
+      - "8080" 
 
   nginx:
     image: docker.io/library/nginx:latest
@@ -40,7 +42,7 @@ services:
       - "80:80"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./frontend:/usr/share/nginx/html:ro   # ← отдаём фронт как статику
+      - ./frontend:/usr/share/nginx/html:ro 
 
 volumes:
   postgres_data:
