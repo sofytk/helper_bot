@@ -1,9 +1,8 @@
-// Используем API URL из конфигурации
 const getApiBaseUrl = () => {
     if (window.AppConfig && window.AppConfig.API_BASE_URL) {
         return window.AppConfig.API_BASE_URL;
     }
-    return '/api';
+    return 'http://0.0.0.0:8000/';
 };
 
 const API_BASE_URL = getApiBaseUrl();
@@ -76,11 +75,11 @@ class RatingManager {
             
             let points;
             if (i <= 3) {
-                points = 200 - (i - 1) * 50; // 200, 150, 100
+                points = 200 - (i - 1) * 50; 
             } else if (i <= 5) {
-                points = 50 - (i - 4) * 15; // 50, 35
+                points = 50 - (i - 4) * 15; 
             } else {
-                points = 20 - (i - 6) * 2; // 20, 18, 16, 14, 12
+                points = 20 - (i - 6) * 2;
             }
             
             mockUsers.push({
@@ -111,13 +110,13 @@ class RatingManager {
             const name = user.full_name || user.username || user.name || 'Пользователь';
             const points = user.points || 0;
             
-            let rankColor = '#666'; // По умолчанию серый
+            let rankColor = '#666'; 
             if (position === 1 || position === 2 || position === 3) {
-                rankColor = '#FFD700'; // Золотой для топ-3
+                rankColor = '#FFD700'; 
             } else if (position === 4 || position === 5) {
-                rankColor = '#FF8C00'; // Оранжевый для 4-5
+                rankColor = '#FF8C00'; 
             } else {
-                rankColor = '#2b7fff'; // Синий для остальных
+                rankColor = '#2b7fff';
             }
             
             html += `

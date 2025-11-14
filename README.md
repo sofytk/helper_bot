@@ -1,13 +1,21 @@
-git add .
-git commit -m "debug for server"
-git push origin main
+#### Это мини-приложение Вырасти Добро для MAX!
+Заранее извиняюсь за костыли, но разработчик по непонятным для него самого причинам, так и не смог выгрузить всё адекватно на сервер(а ещё у него украли доменное имя *нервный хихик*).
+##### Гайд по запуску:
+1. Вставьте адрес вашего компьютера в сети WI-FI. В терминале это можно сделать быстро:
+    a) Windows:
+```
+     ipconfig | findstr "IPv4"
+```
+    b) Mac: 
+```
+    ipconfig getifaddr en0
+```
+    c) Зайдите в настройки WI-FI и скопируйте там IPv4 Address
 
-cd helper_bot
-git init
-git pull origin main
+2. Вставьте добытый ip адрес в \max_hac_bot\max_bot\ip.js
+3. **Ура!** Самое сложное позади. Осталось открыть терминал и выполнить команду:
+```
+   docker-compose up -d --build
+```
 
-docker-compose down
-docker-compose up -d --build
-
-apt install docker.io
-apt install podman-docker
+Теперь по команде **/start** бот присылает приветственное сообщение с кнопкой по которой должно открыться само мини-приложение.

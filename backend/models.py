@@ -10,7 +10,7 @@ class User(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String)
     region = Column(String)
-    water_drops = Column(Integer, default=0)
+    water_drops = Column(Integer, default=20)
     level = Column(Integer, default=1)
     total_points = Column(Integer, default=0)
 

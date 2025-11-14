@@ -468,7 +468,7 @@ body{
 
 .flower-pot {
   position: absolute;
-  bottom: 80px;
+  bottom: 180px;
   left: 50%;
   transform: translateX(-50%);
   width: 80px;
@@ -499,7 +499,6 @@ body{
   background: #654321;
   border-radius: 4px 4px 0 0;
 }
-
 
 .plant {
   position: absolute;

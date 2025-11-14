@@ -1,8 +1,8 @@
 const getApiBaseUrl = () => {
-    if (window.AppConfig && window.AppConfig.API_BASE_URL) {
-        return window.AppConfig.API_BASE_URL;
+    if (window.AppConfig && window.AppConfig.BACKEND_URL) {
+        return window.AppConfig.BACKEND_URL;
     }
-    return 'http://0.0.0.0:8000/api';
+    return 'http://0.0.0.0:8000/';
 };
 
 const API_BASE_URL = getApiBaseUrl();

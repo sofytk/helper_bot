@@ -1,9 +1,8 @@
-// Используем API URL из конфигурации
 const getApiBaseUrl = () => {
     if (window.AppConfig && window.AppConfig.API_BASE_URL) {
         return window.AppConfig.API_BASE_URL;
     }
-    return 'http://0.0.0.0:8000/api';
+    return 'http://0.0.0.0:8000/';
 };
 
 const API_BASE_URL = getApiBaseUrl();

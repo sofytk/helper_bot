@@ -270,7 +270,6 @@ class MapManager {
     }
 
     onMarkerClick(event) {
-    
         console.log('Клик на событие:', event.title);
     }
 

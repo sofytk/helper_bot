@@ -8,7 +8,7 @@ class UserSchema(BaseModel):
     name: str
     region: Optional[str] = None
     total_points: int = 0
-    water_drops: int = 0
+    water_drops: int = 20
     level: int = 1
 
     class Config:

@@ -4,7 +4,7 @@ class WaterGame {
         this.pot = document.getElementById('flowerPot');
         this.plant = document.getElementById('plant');
         this.dropletsContainer = document.getElementById('dropletsContainer');
-        this.availableDrops = 20; 
+        this.availableDrops = 0; 
         this.plantHP = 0; 
         this.plantLevel = 1; 
         this.totalDropsCaught = 0; 
@@ -40,7 +40,7 @@ class WaterGame {
 
     loadFromStorage() {
         const saved = localStorage.getItem('waterDrops');
-        this.availableDrops = saved ? parseInt(saved, 10) : 0;
+        this.availableDrops = saved ? parseInt(saved, 10) : 20;
         
         const savedHP = localStorage.getItem('plantHP');
         this.plantHP = savedHP ? parseInt(savedHP, 10) : 0;
