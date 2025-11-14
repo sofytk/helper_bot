@@ -62,7 +62,7 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
     networks:
-      - rowgood_net
+      - growgood_net
 
 volumes:
   postgres_data:
