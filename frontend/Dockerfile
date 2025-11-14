@@ -1,8 +1,11 @@
-FROM node:18-alpine AS build
-WORKDIR /app
+# FROM node:20
 
-COPY . .
-RUN npm run build
+# WORKDIR /frontend
+# COPY . .
+# RUN npm install -g serve
+# CMD ["serve", ".", "-l", "3000"]
 
 FROM nginx:alpine
-COPY --from=build /app/ /usr/share/nginx/html
+COPY . /usr/share/nginx/html
+EXPOSE 3000
+CMD ["nginx", "-g", "daemon off;"]
