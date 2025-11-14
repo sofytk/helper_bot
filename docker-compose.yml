@@ -19,12 +19,12 @@ services:
     networks:
       - gg_net
 
-  frontend:
-    build: ./frontend
-    container_name: gg_frontend
-    restart: unless-stopped
-    networks:
-      - gg_net
+  # frontend:
+  #   build: ./frontend
+  #   container_name: gg_frontend
+  #   restart: unless-stopped
+  #   networks:
+  #     - gg_net
 
   bot:
     build: ./max_bot
@@ -35,19 +35,19 @@ services:
       - gg_net
 
   nginx:
-    image: docker.io/library/nginx:alpine
-    container_name: gg_nginx
-    restart: unless-stopped
-    depends_on:
-      - frontend
-      - backend
-      - bot
-    ports:
-      - "80:80"
-    volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
-    networks:
-      - gg_net
+  image: nginx:alpine
+  container_name: gg_nginx
+  restart: unless-stopped
+  depends_on:
+    - backend
+    - bot
+  ports:
+    - "80:80"
+  volumes:
+    - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    - ./frontend:/usr/share/nginx/html:ro  # ← статика напрямую
+  networks:
+    - gg_net
 
 volumes:
   postgres_data:
